@@ -1,0 +1,25 @@
+name: Linked List Unit Tests
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up CMake
+      uses: mhorbul/cmake-action@v1
+
+    - name: Build
+      run: |
+        cd test/
+        cmake .
+        make -j4
+
+    - name: Run Unit Tests
+      run: |
+        cd test/
+        ./LinkedListTest
