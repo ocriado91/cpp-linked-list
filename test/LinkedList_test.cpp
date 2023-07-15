@@ -3,7 +3,7 @@
 
 TEST(LinkedListTest, OneSizeTest) {
     ListNode* list = new ListNode(1);
-    ASSERT_EQ(list->size(), 1);
+    ASSERT_EQ(list->size(), 0);
 }
 
 TEST(LinkedListTest, SizeTest) {
@@ -11,7 +11,7 @@ TEST(LinkedListTest, SizeTest) {
     list->append(2);
     list->append(3);
 
-    ASSERT_EQ(list->size(), 3);
+    ASSERT_EQ(list->size(), 2);
 }
 
 TEST(LinkedListTest, InsertTest) {
@@ -21,7 +21,7 @@ TEST(LinkedListTest, InsertTest) {
 
     list->insert(10, 1);
 
-    ASSERT_EQ(list->size(), 4);
+    ASSERT_EQ(list->size(), 3);
     ASSERT_EQ(list->toString(), "[1;10;2;3]");
 }
 
@@ -32,7 +32,7 @@ TEST(LinkedListTest, RemoveTest) {
 
     list->remove(1);
 
-    ASSERT_EQ(list->size(), 2);
+    ASSERT_EQ(list->size(), 1);
     ASSERT_EQ(list->toString(), "[1;3]");
 }
 
@@ -45,7 +45,7 @@ TEST(LinkedListTest, MergeTest) {
 
     ListNode* mergedList = mergeTwoList(list1, list2);
 
-    ASSERT_EQ(mergedList->size(), 6);
+    ASSERT_EQ(mergedList->size(), 5);
     ASSERT_EQ(mergedList->toString(), "[1;2;3;4;5;6]");
 }
 

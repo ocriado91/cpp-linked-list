@@ -12,13 +12,26 @@ class ListNodeException:public std::exception
         std::string message;
 };
 
+// A Linked List is a data structure that allows to
+// handle dynamic data. The basic structure is a node
+// and each node consists of two fields:
+//  - value: stored data
+//  - next: node pointer to the next node
+// ┌────────────┬──────────┐      ┌────────────┬──────────┐
+// │            │          │      │            │          │
+// │  value     │  next    ├─────►│  value     │  next    ├─────► nullptr
+// │            │          │      │            │          │
+// └────────────┴──────────┘      └────────────┴──────────┘
+//         node1                          node2
+//
 struct ListNode {
     int val;
     ListNode *next;
     ListNode() : val(0), next(nullptr) {}
     ListNode(int x) : val(x), next(nullptr) {}
     ListNode(int x, ListNode *next) : val(x), next(next) {}
-    void append(int val) {
+    void append(int val)
+    {
 
         // Find the last element in the list
         ListNode* current = this;
@@ -30,13 +43,10 @@ struct ListNode {
         current->next = new ListNode(val);
     }
 
-    size_t size(){
+    size_t size()
+    {
         ListNode* current = this;
         size_t counter = 0;
-
-        if (current != nullptr) {
-            counter++;
-        }
 
         // Check tail of linked list (NOTE: Add extra threshold counter to avoid
         // infinite loop)
@@ -60,7 +70,6 @@ struct ListNode {
                 + ") exceeds the size of list ("
                 + std::to_string(this->size()) + ")";
             throw ListNodeException(msg);
-            return;
         }
 
         // Save current pointer
